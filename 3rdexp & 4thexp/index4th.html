@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome to Art Gallery</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+        <link href="styles1.css" type="text/css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSczTRciorJ_mlvRoGdx1VJ7PHiIiMtGI9Bvw&usqp=CAU">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            .glow {
+                    font-size: 50px;
+                    color: #fff;
+                    text-align: center;
+                    -webkit-animation: glow 1s ease-in-out infinite alternate;
+                    -moz-animation: glow 1s ease-in-out infinite alternate;
+                    animation: glow 1s ease-in-out infinite alternate;
+                }
+
+                @-webkit-keyframes glow {
+                    from {
+                        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+                    }
+                    
+                    to {
+                        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+                    }
+                }
+            @font-face{
+                font-family: 'Lovelo';
+                src:url('Lovelo Line Light.otf') format('opentype');
+            }
+
+            footer{
+                background-color: black;
+                padding-bottom: 5vh;
+                padding-top: 5vh;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+        <nav class="navbar navbar-default" style="margin-bottom:0 " >
+            <div class="container" >
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h1 style="font-family: 'Lovelo';">BE CSE Art Gallery</h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="navbar-nav nav pull-right">
+                           
+                            <li><a href="C:\Users\Yogesh Maindargi\Desktop\FSD\Ep1 BE CSE Class\NKOCET.html">Home</a>
+                            <div id="mySidenav" class="sidenav">
+                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                <a href="Photos - Menu.html">Photos</a>
+                                <a href="Videos - Menu.html">Videos</a>
+                            </div> 
+                            <li><a onclick="openNav()" style="cursor: pointer;">Gallery</a>
+                            <li><a href="contact.html">Contact</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div style="background: url('Photos/backkk.jpg') ; height: 100vh; background-repeat: no-repeat;background-size: 100% 100%;background-attachment: fixed;">
+            <div style="padding-top: 40vh;">
+                <h1  class="glow" style="font-family:'Lovelo';color: white;">Welcome to  Photos-Art Gallery</h1>
+                <h4 class="text-center">Memories and Explore your happy moments with us</h4>
+            </div>
+        </div>
+        <div style="background-color: teal;min-height: 10vh;">
+            <div class="container">
+                <br>
+                <h3 style="color: white;text-align: center;">We were showcasing your beautiful and good moments <br> which brings smile on your face</h3>
+            </div>
+        </div>
+        <div class="container">
+            <h1>Masterpiece-Moon</h1>
+            <br><br>
+            <div class="row">
+                <div class="col-lg-3">
+                    <a href="#" title="Moon">
+                    <img src="Photos/IMG_3858.JPG" alt=""class="img-thumbnail" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                    </a>
+                    <br><br><br><br>
+                    <a href="#" title="Moon">
+                    <img src="Photos/IMG_3859.JPG" alt="" class="img-thumbnail"onclick="openModal();currentSlide(2)" class="hover-shadow">
+                    </a>
+                </div>
+                <div class="col-lg-3">
+                    <a href="#" title="Moon">
+                    <img src="Photos/IMG_3860.jpg" alt="" class="img-thumbnail" onclick="openModal();currentSlide(3)" class="hover-shadow">
+                    </a>
+                </div>
+                <div class="col-lg-3">
+                    <a href="#" title="MOON">
+                    <img src="Photos/IMG_3868.jpg" alt="" class="img-thumbnail" onclick="openModal();currentSlide(4)" class="hover-shadow">
+                    </a>
+                    <br><br><br><br>
+                    <a href="#" title="Moon">
+                    <img src="Photos/IMG_3869.JPG" alt=""class="img-thumbnail"onclick="openModal();currentSlide(5)" class="hover-shadow" >
+                    </a>
+                </div>
+                <div class="col-lg-3">
+                    <a href="#" title="Moon">
+                    <img src="Photos/IMG_3870.jpg" alt="" class="img-thumbnail" onclick="openModal();currentSlide(6)" class="hover-shadow">
+                    </a>
+                </div>
+          
+          
+        <script>
+            // Open the Modal
+            function openModal() {
+              document.getElementById("myModal").style.display = "block";
+            }
+            
+            // Close the Modal
+            function closeModal() {
+              document.getElementById("myModal").style.display = "none";
+            }
+            
+            var slideIndex = 1;
+            showSlides(slideIndex);
+            
+            // Next/previous controls
+            function plusSlides(n) {
+              showSlides(slideIndex += n);
+            }
+            
+            // Thumbnail image controls
+            function currentSlide(n) {
+              showSlides(slideIndex = n);
+            }
+            
+            function showSlides(n) {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("demo");
+              var captionText = document.getElementById("caption");
+              if (n > slides.length) {slideIndex = 1}
+              if (n < 1) {slideIndex = slides.length}
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+              }
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";
+              dots[slideIndex-1].className += " active";
+              captionText.innerHTML = dots[slideIndex-1].alt;
+            }
+            </script>
+
+        <script>
+            function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+            }
+            
+            function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+            document.body.style.backgroundColor = "white";
+            }
+            </script>
+
+        <br><br>
+        <footer>
+            <div class="container" >
+            <div class="row">
+                <div class="col-lg-4">
+                    <span>
+                        <a href="tel:+917020103460" style="color:white;">+919921541083</a>
+                    </span><br>
+                    <span>
+                        <a href="mailto: sskulkarni899@gmail.com" style="color:white;">sskulkarni899@gmail.com</a>
+                    </span>
+                </div>
+                <div class="col-lg-4">
+                    <h4 style="color: white;"class="text-center">Copyright &copy; @2021 KING.All Rights Reserved</h4>
+                </div>
+                <div class="col-lg-4" >
+                    <a style="color: white;" class="pull-right"href="#">Jobs</a><br>
+                    <a style="color: white;" class="pull-right"href="mailto: sskulkarni899@gmail.com?subject = Feedback&body = Message">Feedback</a>
+                </div>
+            </div>
+            </div>
+        </footer>
+    </body>
+</html>
