@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title>10th exp</title>
+
+</head>
+
+<body>
+
+	<script type="text/javascript">
+
+		function validation()
+
+		{
+
+			var n,m,a,c,s,p;
+
+			n=document.frm.name.value;
+
+			m=document.frm.mob.value;
+
+			a=document.frm.add.value;
+
+			c=document.frm.city.value;
+
+			s=document.frm.state.value;
+
+			p=document.frm.pin.value;
+
+			if (n!=""||m!=""||a!=""||c!=""||s!=""||p!="") 
+
+			{
+
+				if (!n.match(/^[a-z A-Z]+$/))
+
+				{
+
+					alert("Invalid name fields");
+
+				}				
+
+				else if(!m.match(/^\d{10}$/))
+
+				{
+
+					alert("Invalid mob no fields");
+
+				}
+
+				else if (!p.match(/^\d{6}$/)) 
+
+				{
+
+					alert("Invalid pincode fields");
+
+				}
+
+				else
+
+				{
+
+					alert("Submit succesfully......");
+
+				}
+
+			}
+
+			else
+
+			{
+
+				alert("Invalid fields");
+
+			}
+
+		}
+
+	</script>
+
+<h1>Student Registration Form</h1>
+
+<form name="frm">
+
+<table>
+
+<tr><td>Name: </td><td><input type="text" name="name"></td></tr>
+
+<tr><td>Mobile No: </td><td><input type="text" name="mob"></td></tr>
+
+<tr><td>Address: </td><td><input type="text" name="add"></td></tr>
+
+<tr><td>City: </td><td><input type="text" name="city"></td></tr>
+
+<tr><td>State: </td><td><input type="text" name="state"></td></tr>
+
+<tr><td>Pincode: </td><td><input type="text" name="pin"></td></tr>
+
+</table><br>
+
+<input type="button" name="b1" onclick="validation()" value="Submit">
+
+<input type="reset" name="b2">
+
+</form>
+<div class="footer">
+	        <div class="container text-center">
+	             Made with <i class="fa fa-heart heart"></i> by <a href="" target="_blank">Shreyas Kulkarni</a></a>
+	        </div>
+	    </div>
+	</div>
+</body>
+
+</html>
+

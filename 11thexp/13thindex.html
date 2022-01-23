@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Balchandra Samleti">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>AJAX</title>
+    <script>
+
+    function showData(str) {
+      if (str == "") {
+        document.getElementById("Display").innerHTML = "";
+        return;
+      }
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", 'read.php?dept='+str, true);
+      xhttp.onload = function() {
+        if (this.status == 200) {
+         console.log(this.responseText);
+          let JSArr = JSON.parse(this.responseText);
+          output = '';
+              for(let i in JSArr){
+                  output += `<td>${JSArr[i].id}</td>
+                  <td>${JSArr[i].deptname}</td>
+                  <td>${JSArr[i].data1}</td>
+                  <td>${JSArr[i].data2}</td>
+                  <td>${JSArr[i].data3}</td>
+                `;
+            }
+            document.getElementById('Display').innerHTML = output;
+        }
+      };
+      xhttp.send();
+    }
+
+    </script>
+</head>
+<body><br><br><br>
+    <div class="container">
+        <center>
+        <h2>XMLHttpRequest & DB Connection</h2>
+        <hr>
+        <br><br>
+        <form class="menu btn btn-primary" action=""> 
+            <select id="data" name="data" onchange="showData(this.value);">
+              <option value="" >Select a Department:</option>
+              <option value="cse">CSE</option>
+              <option value="civil">Civil</option>
+              <option value="mehanical">Mechanical</option>
+            </select>
+        </form>
+        </center>
+        <br><br><br>
+
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Department</th>
+              <th scope="col">Info</th>
+              <th scope="col">HOD</th>
+              <th scope="col">INTAKE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="Display"></tr>
+           </tbody>
+        </table>
+      <div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<?php
+
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+include_once './db.php';
+
+$obj = new DB();
+$con = $obj->db_connect();
+$dept = $_GET['dept'];
+
+
+if(!$con){
+    echo 404;
+}else{
+    $sql = ("SELECT id, deptname, data1, data2, dat3 FROM display WHERE deptname=?;");
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        echo "SQL statement failed";
+    }else{
+        mysqli_stmt_bind_param($stmt,"s",$dept);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $arr = array();
+        $cnt = 1;
+        while($row = mysqli_fetch_assoc($result)){
+            $arr[$cnt] = array(
+                'id'  =>  $row['id'],
+                'deptname' =>  $row['deptname'],
+                'data1' => $row['data1'],
+                'data2' => $row['data2'],
+                'data3'   =>  $row['dat3']
+            );
+        $cnt += 1;
+        }
+        echo json_encode($arr);
+    }
+}
+
